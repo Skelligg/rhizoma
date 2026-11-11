@@ -1,0 +1,10 @@
+# Caddy is the only program exposed to the internet. It obtains and renews the HTTPS
+# certificate for SITE_ADDRESS on its own, and passes requests to the application.
+{$SITE_ADDRESS} {
+	encode zstd gzip
+
+	# The application's health check is for use inside the server only.
+	respond /actuator/* 404
+
+	reverse_proxy app:8080
+}

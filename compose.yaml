@@ -1,0 +1,11 @@
+# Development database. Spring Boot starts it automatically on `./gradlew bootRun`.
+# The password here is for local development only. Production settings live in deploy/.
+services:
+  postgres:
+    image: 'postgres:18'
+    environment:
+      - 'POSTGRES_DB=rhizoma'
+      - 'POSTGRES_USER=rhizoma'
+      - 'POSTGRES_PASSWORD=rhizoma-dev'
+    ports:
+      - '5432'
